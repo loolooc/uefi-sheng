@@ -5,16 +5,24 @@ sheng (Xiaomi Pad 6S Pro, SM8550) board package: register bases match SM8550,
 the SM8650 differences (CPU 1+5+2, Adreno 750, GMU 750.1) live in
 UniXNU-sm8650-common.
 
-## Memory and firmware inputs (REQUIRED)
+## Memory and firmware inputs (partially collected)
 
-The sheng memory map reconciled 34 Linux DTS reservations with 27 stock
-memory-map regions. For meizu21 the equivalent inputs still have to be
-collected:
+Firmware input status (2026-11-04):
 
-- REQUIRED: Meizu 21 official fastboot archive (URL, SHA-256, MD5, bytes)
-  and its extracted `uefiplat.cfg` SHA-256.
+- COLLECTED: Meizu 21 Flyme 12.6.0.0A OTA archive (device id 198) located and
+  its payload manifest parsed. The following UEFI partition images were
+  extracted over HTTP ranges from the payload (SHA-256 verified against the
+  manifest, see UniXNU-meizu21 `board.toml [firmware.partitions]`):
+  - abl (270336 B, ELF) - contains a UEFI FV (signature `_FVH` at 0x1028)
+  - xbl (1105920 B, ELF) - main UEFI firmware
+  - xbl_config, uefisecapp, imagefv, devcfg
 - REQUIRED: memory map from the stock firmware / Linux DTS reservations
-  (memory, PIL gaps, display/Demura, DBI dump, CPU vectors).
+  (memory, PIL gaps, display/Demura, DBI dump, CPU vectors). Linux mainline
+  sm8650.dtsi reservations are cached (34 regions); the stock regions
+  (uefiplat.cfg / UEFI memory map) still need extraction from xbl/abl or a
+  boot log.
+- REQUIRED: stock DXE driver binaries for MEIZU21_VENDOR_HW=1 (Binaries/
+  meizu21/QcomPkg/Drivers/...) - extract from the xbl FV (next step).
 - The 3 MiB FD at `0xa7100000` follows the sheng/houji SM8650 layout;
   verify against the Meizu 21 ABL UEFI window before the first boot.
 

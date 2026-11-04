@@ -16,11 +16,13 @@ Firmware input status (2026-11-04):
   - abl (270336 B, ELF) - contains a UEFI FV (signature `_FVH` at 0x1028)
   - xbl (1105920 B, ELF) - main UEFI firmware
   - xbl_config, uefisecapp, imagefv, devcfg
-- REQUIRED: memory map from the stock firmware / Linux DTS reservations
-  (memory, PIL gaps, display/Demura, DBI dump, CPU vectors). Linux mainline
-  sm8650.dtsi reservations are cached (34 regions); the stock regions
-  (uefiplat.cfg / UEFI memory map) still need extraction from xbl/abl or a
-  boot log.
+- COLLECTED: Memory map input from the official Flyme 12.6.0.0A vendor_boot
+  DTB (extracted from the OTA payload): 35 stock reserved-memory regions from
+  0x80000000 (gunyah_hyp) through 0xffe00000 (llcc_lpi), including xbl_aop,
+  smem, qdss, mpss, cdsp/adspslpi, tz, trust_ui/oem VM and hwfence. Written to
+  UniXNU-meizu21 `dts/meizu21.dts`. Linux mainline sm8650.dtsi reservations
+  remain cached for cross-checking. The UEFI memory map (MemoryMapLib) should
+  mirror these reservations plus the 3 MiB FD window.
 - REQUIRED: stock DXE driver binaries for MEIZU21_VENDOR_HW=1 (Binaries/
   meizu21/QcomPkg/Drivers/...) - extract from the xbl FV (next step).
 - The 3 MiB FD at `0xa7100000` follows the sheng/houji SM8650 layout;

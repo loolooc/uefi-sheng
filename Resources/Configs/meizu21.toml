@@ -1,0 +1,34 @@
+#
+# Meizu 21 / meizu21 (M461Q) Boot Shim Configs
+#
+[boot_shim]
+requires_kernel_header = true
+
+#
+# Meizu 21 UEFI FD Configs -- meizu21Pkg SILICIUM_UEFI.fd
+# FD base 0xA7100000 / 3 MiB, from the board memory map (firmware/uefiplat.cfg
+# MaxMemoryRegions=74 window between the reserved regions).
+#
+[uefi_fd]
+base = 0xA7100000
+size = 0x300000
+
+#
+# Android Boot Image Kernel Configs
+#
+[boot_image_kernel]
+kernel_compression = "gzip"
+append_dtb         = true
+
+#
+# Android Boot Image Configs
+#
+# header_version = 4: Android 13+ layout, same as the UniXNU-houji reference
+# (v0 verify in the CLI does not round-trip on the padded kernel offset).
+[boot_image]
+header_version = 4
+base = 0x00000000
+kernel_offset = 0x00008000
+ramdisk_offset = 0x01000000
+tags_offset = 0x00000100
+pagesize = 4096

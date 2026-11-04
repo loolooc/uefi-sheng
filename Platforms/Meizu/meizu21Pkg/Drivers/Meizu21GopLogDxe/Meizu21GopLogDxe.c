@@ -1,4 +1,4 @@
-﻿/** @file
+/** @file
   Hands the real scan-out frame buffer to the early frame buffer log.
 
   The DEBUG log draws into the "Display Reserved" region with build-time

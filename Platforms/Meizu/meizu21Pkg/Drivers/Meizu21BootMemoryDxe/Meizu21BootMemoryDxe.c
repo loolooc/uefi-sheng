@@ -1,4 +1,4 @@
-﻿/** @file
+/** @file
   Add available DRAM from the firmware FDT to the GCD memory map.
 
   Memory additions use meizu21's mapping limits and exclude reserved ranges.

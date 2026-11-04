@@ -1,4 +1,4 @@
-﻿/** @file
+/** @file
   The tablet's power and volume keys as a SimpleTextIn device.
 
   The boot manager navigates with ordinary console keys. This driver reads the three hardware keys through the SPMI PMIC arbiter

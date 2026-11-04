@@ -1,4 +1,4 @@
-﻿##
+##
 #  Copyright (c) 2011 - 2022, ARM Limited. All rights reserved.
 #  Copyright (c) 2014, Linaro Limited. All rights reserved.
 #  Copyright (c) 2015 - 2020, Intel Corporation. All rights reserved.
@@ -34,12 +34,12 @@
   MEIZU21_VENDOR_HW                = 0
 
   #
-  # 0 = SM8550-AB
-  # 1 = SM8550-AC
+  # 2 = SM8650-AB (Snapdragon 8 Gen 3 standard, as Xiaomi 14)
+  # 0,1,3,4 = other SM8650 variants (see LanaiPkg)
   #
-  SOC_TYPE                       = 0
+  SOC_TYPE                       = 2
 
-!include KailuaPkg/KailuaPkg.dsc.inc
+!include LanaiPkg/LanaiPkg.dsc.inc
 
 !if ($(USE_CUSTOM_DISPLAY_DRIVER) == 1) && ($(MEIZU21_VENDOR_HW) == 0)
   !error The stock DisplayDxe chain needs MEIZU21_VENDOR_HW = 1
@@ -114,7 +114,6 @@
   meizu21Pkg/Drivers/Meizu21BootMemoryDxe/Meizu21BootMemoryDxe.inf
   UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf
   meizu21Pkg/Drivers/Meizu21KeyInputDxe/Meizu21KeyInputDxe.inf
-  DarwinBootPkg/Driver/DarwinBoot.inf
 
 [LibraryClasses]
   UniXNULib|UniXNUPkg/Library/UniXNULib/UniXNULib.inf

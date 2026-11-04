@@ -1,4 +1,4 @@
-﻿/** @file
+/** @file
   Hardware keys of the Meizu Pad 6S Pro through the SPMI PMIC arbiter, as pure register-pointer code (host-testable).
 
   Facts, all from the board devicetree and mainline Linux (drivers/input/misc/pm8941-pwrkey.c, drivers/pinctrl/qcom/pinctrl-spmi-gpio.c):

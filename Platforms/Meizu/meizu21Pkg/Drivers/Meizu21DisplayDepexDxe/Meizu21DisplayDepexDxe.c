@@ -1,4 +1,4 @@
-﻿/** @file
+/** @file
   meizu21 board glue for the stock DisplayDxe dependency expression.
 
   The unchanged stock meizu21 DisplayDxe DEPEX requires nine protocol GUIDs.

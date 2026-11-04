@@ -1,4 +1,4 @@
-﻿// Host test of Meizu21SpmiKeys.h against a software model of the arbiter's observer channels.
+// Host test of Meizu21SpmiKeys.h against a software model of the arbiter's observer channels.
 #include <assert.h>
 #include <pthread.h>
 #include <stdio.h>

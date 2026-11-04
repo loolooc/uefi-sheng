@@ -1,4 +1,4 @@
-﻿[Defines]
+[Defines]
   INF_VERSION                    = 0x0001001B
   BASE_NAME                      = Meizu21DisplayDepexDxe
   FILE_GUID                      = 2E9C7B54-8F1D-4A63-9B0E-5C4D21FA8B37

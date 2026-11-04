@@ -23,8 +23,16 @@ Firmware input status (2026-11-04):
   UniXNU-meizu21 `dts/meizu21.dts`. Linux mainline sm8650.dtsi reservations
   remain cached for cross-checking. The UEFI memory map (MemoryMapLib) should
   mirror these reservations plus the 3 MiB FD window.
-- REQUIRED: stock DXE driver binaries for MEIZU21_VENDOR_HW=1 (Binaries/
-  meizu21/QcomPkg/Drivers/...) - extract from the xbl FV (next step).
+- COLLECTED: stock `uefiplat.cfg` extracted from the uefi partition FV
+  (uefi.img, hash a48d3ee3...): Version 3, MaxMemoryRegions=74,
+  SharedIMEMBaseAddr=0x14680000, DloadCookieAddr=0x01FD9000, NumCpus=8,
+  EnableMultiThreading=1, SecurityFlag=0xC4, DefaultBDSBootApp=LinuxLoader,
+  ShmBridgememSize=0xA00000. Saved at UniXNU-meizu21/firmware/uefiplat.cfg.
+- NOT REQUIRED: stock DXE driver binaries. The UniXNU UEFI port uses the
+  open-source EDK2 baseline with self-written drivers (cf. the houji port:
+  HoujiRamDiskDxe, HoujiRootRAMDxe, NoCapsuleRuntimeDxe in uefi/overlay); the
+  stock uefi.img DXE containers (types 0x8A/0x93) are encrypted and would
+  only matter for a stock-firmware-based (VENDOR_HW=1) build.
 - The 3 MiB FD at `0xa7100000` follows the sheng/houji SM8650 layout;
   verify against the Meizu 21 ABL UEFI window before the first boot.
 
